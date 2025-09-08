@@ -1,0 +1,223 @@
+<!--
+  Project: Dynamic Code
+  Description: A collection of ready-to-use tools and components built with HTML, CSS, and JavaScript to create eye-catching and engaging Dynamic Animation.
+  Author: Ahmed Hafez
+  Date: 2025-09-01
+  File: index.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚡️Dynamic Code</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div style="max-width: 100%;padding-left: 50px;padding-right: 50px;" class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-4">
+      <h1 class="fw-bold text-primary">⚡️Dynamic Code</h1>
+      <p class="text-muted">A collection of engaging Dynamic Code with HTML, CSS, and JavaScript</p>
+
+      <!-- ✅ Cards count & Last updated -->
+      <div class="d-flex justify-content-center gap-3 mt-3">
+        <span style="font-size: 12px !important;" id="cards-count" class="badge bg-primary fs-6 px-3 py-2"></span>
+        <span style="font-size: 12px !important;" class="badge bg-secondary fs-6 px-3 py-2">
+          Last Updated: <span id="last-updated"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Search box -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6">
+        <input id="search-box" type="text" class="form-control" placeholder="🔍 Search by title...">
+      </div>
+    </div>
+
+    <!-- Cards container -->
+    <div id="cards-container" class="row g-4"></div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ✅ Data directly inside JS
+    const cardsData = [
+      {
+        title: "3d counter animation",
+        description: "3d counter animation",
+        link: "3d-counter-animation",
+        image: "02.jpg"
+      },
+      {
+        title: "3D Firework Animation",
+        description: "3D Dramatic Firework Animation",
+        link: "3D-Dramatic-Firework-Animation",
+        image: "54.jpg"
+      },
+      {
+    title: "3D wave animation",
+    description: "3D wave animation",
+    link: "3D-wave-animation",
+    image: "47.jpg"
+  },
+  {
+    title: "animated 3d tags",
+    description: "animated 3d tags cloud",
+    link: "animated-3d-tags",
+    image: "35.jpg"
+  },
+  {
+    title: "animated navigation",
+    description: "animated navigation",
+    link: "animated-navigation",
+    image: "55.jpg"
+  },
+  {
+    title: "circle slider animated",
+    description: "circle slider animated",
+    link: "circle-slider-animated-infographics",
+    image: "38.jpg"
+  },
+  {
+    title: "coming soon page",
+    description: "coming soon page",
+    link: "coming-soon-page",
+    image: "39.jpg"
+  },
+  {
+    title: "animated text",
+    description: "cool animated text",
+    link: "animated-text",
+    image: "40.jpg"
+  },
+  {
+    title: "timeline",
+    description: "timeline",
+    link: "timeline",
+    image: "42.jpg"
+  },
+  {
+    title: "current location weather",
+    description: "current location weather",
+    link: "current-location-weather",
+    image: "43.jpg"
+  },
+  {
+    title: "cute gallery",
+    description: "cute gallery",
+    link: "cute-gallery",
+    image: "56.jpg"
+  },
+  {
+    title: "double vertical slider",
+    description: "double vertical slider",
+    link: "double-vertical-slider",
+    image: "57.jpg"
+  },
+  {
+    title: "expanding cards",
+    description: "expanding cards",
+    link: "expanding-cards",
+    image: "58.jpg"
+  },
+  {
+    title: "horizontal parallax gallery",
+    description: "horizontal parallax gallery",
+    link: "horizontal-parallax-gallery",
+    image: "60.jpg"
+  },
+  {
+    title: "photo box",
+    description: "photo box",
+    link: "photobox",
+    image: "64.jpg"
+  },
+  {
+    title: "Pop-out Avatars",
+    description: "Pop-out Avatars",
+    link: "Pop-out-Avatars",
+    image: "49.jpg"
+  },
+  {
+    title: "Photo Gallery",
+    description: "Responsive Photo Gallery",
+    link: "Responsive-Photo-Gallery",
+    image: "50.jpg"
+  },
+  {
+    title: "rotating nav animation",
+    description: "rotating nav animation",
+    link: "rotating-nav-animation",
+    image: "67.jpg"
+  },
+  {
+    title: "Vertical Timeline",
+    description: "Vertical Timeline",
+    link: "Vertical-Timeline",
+    image: "46.jpg"
+  },
+  {
+    title: "QR Code Generator",
+    description: "QR Code Generator",
+    link: "QR-Code-Generator",
+    image: "25.jpg"
+  },
+  {
+    title: "Drawing Signature",
+    description: "Drawing Signature",
+    link: "Drawing-Signature",
+    image: "101.png"
+  }
+    ];
+
+    // Function to display cards
+    function displayCards(data) {
+      const container = document.getElementById('cards-container');
+      container.innerHTML = '';
+      data.forEach(card => {
+        const cardElement = `
+          <div class="col-md-3">
+            <div class="card h-100 shadow-sm border-0">
+              <a href="${card.link}" target="_blank">
+                <img src="images/${card.image}" class="card-img-top" alt="${card.title}" style="height: 220px; object-fit: cover;">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">${card.title}</h5>
+                <p class="card-text text-muted">${card.description}</p>
+                <a href="${card.link}" target="_blank" class="btn btn-primary btn-sm">Show</a>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += cardElement;
+      });
+
+      // ✅ Update cards count dynamically
+      document.getElementById("cards-count").textContent = `Total Codes: ${data.length}`;
+    }
+
+    // Initial render
+    displayCards(cardsData);
+
+    // Search filter
+    document.getElementById('search-box').addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const filteredData = cardsData.filter(card =>
+        card.title.toLowerCase().includes(searchTerm)
+      );
+      displayCards(filteredData);
+    });
+
+    // ✅ Last updated date (auto from file last modified)
+    const lastUpdated = new Date(document.lastModified);
+    document.getElementById("last-updated").textContent = lastUpdated.toLocaleDateString();
+  </script>
+</body>
+</html>
